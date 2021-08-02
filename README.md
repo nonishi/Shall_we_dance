@@ -1,24 +1,33 @@
-# README
+# <Shall we dance?>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+<社交ダンスのリーダー・パートナー募集サイト>
 
-Things you may want to cover:
+### サイトテーマ
+<老若男女が使いやすく。希望のリーダー・パートナーを見つけるお手伝い。>
 
-* Ruby version
+### テーマを選んだ理由
+<大学時代に社交ダンス部に所属しており、卒部してから数年経った時にまた社交ダンスを踊りたいなと思うようになりました。  
+*しかし、踊る相手が見つからないっ..!*. 
+確かにネット上には募集用の掲示板があり、今はSNSで探すこともできます。 
+しかし、掲示板では今もその人が募集しているのか分からない、SNSでは拡散力が無ければ探している事も知ってもらえない。  
+そんな思いから新しい社交ダンスのリーダー・パートナー募集サイトを作ろうと思いました。>
 
-* System dependencies
+### ターゲットユーザ
+<社交ダンスが踊りたい、でも踊る相手が見つからない老若男女>
 
-* Configuration
+### 主な利用シーン
+<社交ダンスのリーダー・パートナーを見つけたい時>
 
-* Database creation
+## 設計書
+<後で追記>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1TEfcw268k62rH6nfbFoAm2CkAqC1r9AtbSaTAnCJaCQ/edit#gid=0>
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：後で追記
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
