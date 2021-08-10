@@ -34,16 +34,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       
       t.string :name, null: false
       t.string :profile_image_id
-      t.integer :age, null: false
-      t.integer :target, null: false
-      t.integer :height, null: false
+      t.integer :age
+      t.boolean :target, null: false, default: true
+      t.integer :height
       t.string :weight
-      t.string :area, null: false
-      t.string :history, null: false
+      t.integer :area, null: false, default: 0
+      t.string :history
       t.string :grade
       t.text :introduction
-      t.integer :status, null: false
-      t.integer :club_status, null: false
+      t.integer :status, null: false, default: 0
+      t.integer :club_status
       t.boolean :is_active, null: false, default: true
 
       t.timestamps null: false

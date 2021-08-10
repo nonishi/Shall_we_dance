@@ -75,16 +75,16 @@ ActiveRecord::Schema.define(version: 2021_08_05_055958) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "profile_image_id"
-    t.integer "age", null: false
-    t.integer "target", null: false
-    t.integer "height", null: false
+    t.integer "age"
+    t.boolean "target", default: true, null: false
+    t.integer "height"
     t.string "weight"
-    t.string "area", null: false
-    t.string "history", null: false
+    t.integer "area", default: 0, null: false
+    t.string "history"
     t.string "grade"
     t.text "introduction"
-    t.integer "status", null: false
-    t.integer "club_status", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "club_status"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
