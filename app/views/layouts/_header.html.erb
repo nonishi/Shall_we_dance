@@ -3,7 +3,7 @@
     <div class="container">
       <%= link_to "Shall we dance?", root_path, class: "navbar-brand" %>
       <% if user_signed_in? %>
-        <div class="ml-5">ようこそ！<%= current_customer.last_name %>さん</div>
+        <div class="ml-5">ようこそ！<%= current_user.name %>さん</div>
       <% end %>
       <ul class="navbar-nav ml-auto navbar">
         <% if admin_signed_in? %>

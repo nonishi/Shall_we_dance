@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :room_users
   has_many :chats
   
+  attachment :profile_image
+  
   enum area: {
      "選択して下さい":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
