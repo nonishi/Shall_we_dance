@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <%= link_to "Shall we dance?", root_path, class: "navbar-brand" %>
+      <% if user_signed_in? %>
+        <div class="ml-5">ようこそ！<%= current_customer.last_name %>さん</div>
+      <% end %>
+      <ul class="navbar-nav ml-auto navbar">
+        <% if admin_signed_in? %>
+         <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-light", method: :delete %></li>
+        <% elsif user_signed_in? %>
+         <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class: "btn btn-light" %></li>
+         <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-light", method: :delete %></li>
+        <% else %>
+         <li class="nav-item"><%= link_to "About", homes_about_path, class: "btn btn-light" %></li>
+         <li class="nav-item"><%= link_to "募集一覧", posts_path, class: "btn btn-light" %></li>
+         <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-light", data: {"turbolinks" => false} %></li>
+         <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-light", data: {"turbolinks" => false} %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

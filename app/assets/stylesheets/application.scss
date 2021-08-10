@@ -15,7 +15,12 @@
  */
 @import "bootstrap";
 
-.field {
+.navbar{
+  display: flex;
+  flex-direction: row;
+}
+
+.field{
   margin-bottom: 13px;
 }
 
