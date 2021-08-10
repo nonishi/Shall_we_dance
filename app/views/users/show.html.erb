@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-6 mx-auto">
       <table class="table">
-        <tr>
-          <% if @user.is_active %>
-            【<font color="green">募集中</font>】
-          <% else %>
-            【<font color="gray">募集終了</font>】
-          <% end %>
-        </tr>
         <tr><%= attachment_image_tag @user, :profile_image, size: "200x200", fallback: "no-image-icon.jpg" %></tr>
+         <tr>
+          <td>
+            <% if @user.is_active %>
+              【<font color="green">募集中</font>】
+            <% else %>
+              【<font color="gray">募集終了</font>】
+            <% end %>
+          </td>
+        </tr>
         <tr>
           <th>名前</th>
           <td><%= @user.name %></td>
@@ -27,10 +29,6 @@
           <th>地域</th>
           <td><%= @user.area %></td>
         </tr>
-      </table>
-    </div>
-    <div class="col-6">
-      <table class="table">
         <tr>
           <th>社交ダンス歴</th>
           <td><%= @user.history %></td>
