@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :max_height
       t.integer :status, null: false
       t.integer :type, null: false
-      t.integer :history, null: false
+      t.integer :experience, null: false
       t.string :place
       t.string :frequency
       t.text :comment

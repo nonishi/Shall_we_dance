@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>プロフィール編集</h2>
+      <%= form_with model: @user, local: true do |f| %>
+        <div class="field">
+          <%= f.label "募集状況" %><br/>
+          <%= f.radio_button :is_active, 'true' %>
+          <%= f.label :is_active, '募集中', value: true %>
+          <%= f.radio_button :is_active, 'false' %>
+          <%= f.label :is_active, '募集終了', value: false %>
+        </div>
+        <div class="field">
+          <%= f.label :name, "名前" %><br/>
+          <%= f.text_field :name, size: 30 %>
+        </div>
+        <div class="field">
+          <%= f.label "プロ/アマ" %><br/>
+          <%= f.radio_button :status, 'アマチュア' %>
+          <%= f.label :status, 'アマチュア', value: "アマチュア" %>
+          <%= f.radio_button :status, 'プロ' %>
+          <%= f.label :status, 'プロ', value: "プロ" %>
+        </div>
+        <div class="field">
+          <%= f.label :age, "年齢" %><br/>
+          <%= f.number_field :age, min: 0, max: 100 %>
+        </div>
+        <div class="field">
+          <%= f.label :height, "身長" %><br/>
+          <%= f.number_field :height, min: 100, max: 200 %>
+        </div>
+        <div class="field">
+          <%= f.label :weight, "体重・体型" %><br/>
+          <%= f.text_field :weight, size: 30  %>
+        </div>
+        <div class="field">
+          <%= f.label :area, "地域" %><br/>
+          <%= f.select :area, User.areas.keys.to_a, include_blank: "選択して下さい" %>
+        </div>
+        <div class="field">
+          <%= f.label :experience, "社交ダンス歴" %><br/>
+          <%= f.select :experience, User.histories.keys.to_a, include_blank: "選択して下さい" %>
+        </div>
+        <div class="field">
+          <%= f.label :grade, "持ち級" %><br/>
+          <%= f.text_field :grade, size: 30 %>
+        </div>
+        <div class="field">
+          <%= f.label :introduction, "自己紹介" %><br/>
+          <%= f.text_area :introduction, size: "30x3" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "プロフィール更新", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

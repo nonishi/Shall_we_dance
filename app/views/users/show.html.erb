@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-6 mx-auto">
       <table class="table">
-        <tr><%= attachment_image_tag @user, :profile_image, size: "200x200", fallback: "no-image-icon.jpg" %></tr>
-         <tr>
+        <tr><%= attachment_image_tag @user, :profile_image, size: "200x200", fallback: "no_image.jpg" %></tr>
+        <tr>
+          <th>募集状況</th>
           <td>
             <% if @user.is_active %>
               【<font color="green">募集中</font>】
@@ -14,8 +15,7 @@
         </tr>
         <tr>
           <th>名前</th>
-          <td><%= @user.name %></td>
-          <td>【<%= @user.status %>】</td>
+          <td><%= @user.name %> 【<%= @user.status %>】</td>
         </tr>
         <tr>
           <th>年齢</th>
@@ -26,16 +26,16 @@
           <td><%= @user.height %></td>
         </tr>
         <tr>
+          <th>体重・体型</th>
+          <td><%= @user.weight %></td>
+        </tr>
+        <tr>
           <th>地域</th>
           <td><%= @user.area %></td>
         </tr>
         <tr>
           <th>社交ダンス歴</th>
-          <td><%= @user.history %></td>
-        </tr>
-        <tr>
-          <th>学連経験</th>
-          <td><%= @user.club_status %></td>
+          <td><%= @user.experience %>(学連：<%= @user.club_status %>）</td>
         </tr>
         <tr>
           <th>持ち級</th>
@@ -46,6 +46,7 @@
           <td><%= @user.introduction %></td>
         </tr>
       </table>
+      <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %>
     </div>
   </div>
 </div>

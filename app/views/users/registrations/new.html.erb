@@ -27,8 +27,16 @@
           <%= f.label :status, 'プロ', value: "プロ" %>
         </div>
         <div class="field">
+          <%= f.label :experience, "ダンス歴" %><br/>
+          <%= f.select :experience, User.experiences.keys.to_a, include_blank: "選択して下さい" %>
+        </div>
+        <div class="field">
+          <%= f.label :club_status, "学連経験" %><br/>
+          <%= f.select :club_status, User.club_statuses.keys.to_a, include_blank: "選択して下さい" %>
+        </div>
+        <div class="field">
           <%= f.label :area, "地域" %><br/>
-          <%= f.select :area, User.areas.keys, {} %>
+          <%= f.select :area, User.areas.keys.to_a, include_blank: "選択して下さい" %>
         </div>
         <div class="field">
           <%= f.label :password, "パスワード" %>

@@ -39,11 +39,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :height
       t.string :weight
       t.integer :area, null: false, default: 0
-      t.string :history
+      t.string :experience
       t.string :grade
       t.text :introduction
       t.integer :status, null: false, default: 0
-      t.integer :club_status
+      t.integer :club_status, null: false
       t.boolean :is_active, null: false, default: true
 
       t.timestamps null: false

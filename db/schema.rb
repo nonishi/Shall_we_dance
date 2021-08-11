@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_055958) do
     t.integer "max_height"
     t.integer "status", null: false
     t.integer "type", null: false
-    t.integer "history", null: false
+    t.integer "experience", null: false
     t.string "place"
     t.string "frequency"
     t.text "comment"
@@ -80,11 +80,11 @@ ActiveRecord::Schema.define(version: 2021_08_05_055958) do
     t.integer "height"
     t.string "weight"
     t.integer "area", default: 0, null: false
-    t.string "history"
+    t.string "experience"
     t.string "grade"
     t.text "introduction"
     t.integer "status", default: 0, null: false
-    t.integer "club_status"
+    t.integer "club_status", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
