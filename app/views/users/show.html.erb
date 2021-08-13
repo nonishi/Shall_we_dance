@@ -47,10 +47,10 @@
         </tr>
       </table>
       <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %>
-      <% if Post.where(user_id: @user_id).exists? %>
+      <% if Post.where(user_id: @user.id).exists? %>
         <%= link_to "自分の募集要項を見る", post_path(@user), class: "btn btn-success" %>
       <% else %>
-        <%= link_to "募集要項を作成する", new_post_path, class: "btn btn-success" %>
+        <%= link_to "募集要項を作成する", new_post_path, class: "btn btn-prima" %>
       <% end %>
     </div>
   </div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>募集詳細</h2>
+      <table class="table">
+        <tr>
+          <th>名前</th>
+          <td><%= link_to @user.name, user_path(@user) %></td>
+        </tr>
+        <tr>
+          <th>プロ・アマ希望</th>
+          <td><%= @post.status %></td>
+        </tr>
+        <tr>
+          <th>希望種目</th>
+          <td><%= @post.directionality %></td>
+        </tr>
+        <tr>
+          <th>希望年齢</th>
+          <td><%= @post.min_age %>歳〜<%= @post.max_age %>歳</td>
+        </tr>
+        <tr>
+          <th>希望身長</th>
+          <td><%= @post.min_height %>cm〜<%= @post.max_height %>cm</td>
+        </tr>
+        <tr>
+          <th>希望ダンス歴</th>
+          <td><%= @post.experience %></td>
+        </tr>
+        <tr>
+          <th>希望練習場所</th>
+          <td><%= @post.place %></td>
+        </tr>
+        <tr>
+          <th>希望練習頻度</th>
+          <td><%= @post.frequency %></td>
+        </tr>
+        <tr>
+          <th>募集コメント</th>
+          <td><%= @post.comment %></td>
+        </tr>
+      </table>
+      <% if @post.user_id = current_user.id %>
+        <%= link_to "募集要項編集", edit_post_path(@post), class: "btn btn-success" %>
+      <% end %>
+      <%= link_to "募集一覧へ", posts_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

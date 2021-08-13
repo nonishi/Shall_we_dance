@@ -12,14 +12,6 @@
           <%= f.select :directionality, Post.directionalities.keys.to_a, include_blank: "選択して下さい" %>
         </div>
         <div class="field">
-          <%= f.label :place, "希望練習場所" %><br/>
-          <%= f.text_field :place, size: 30 %>
-        </div>
-        <div class="field">
-          <%= f.label :frequency, "希望練習頻度" %><br/>
-          <%= f.text_field :frequency, size: 30 %>
-        </div>
-        <div class="field">
           <%= f.label "希望年齢" %><br/>
           <%= f.number_field :min_age, min: 0, max: 100 %>歳~<%= f.number_field :max_age, min: 0, max: 100 %>歳
         </div>
@@ -32,7 +24,15 @@
           <%= f.select :experience, Post.experiences.keys.to_a, include_blank: "選択して下さい" %>
         </div>
         <div class="field">
-          <%= f.label :comment, "自己紹介" %><br/>
+          <%= f.label :place, "希望練習場所" %><br/>
+          <%= f.text_field :place, size: 30 %>
+        </div>
+        <div class="field">
+          <%= f.label :frequency, "希望練習頻度" %><br/>
+          <%= f.text_field :frequency, size: 30 %>
+        </div>
+        <div class="field">
+          <%= f.label :comment, "募集コメント" %><br/>
           <%= f.text_area :comment, size: "30x3" %>
         </div>
         <div class="actions">

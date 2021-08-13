@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+  
   def new
     @post = Post.new
   end
@@ -19,9 +21,31 @@ class PostsController < ApplicationController
     end
   end
   
+  def index
+    @posts =Post.all
+  end
+  
   def show
     @post = Post.find(params[:id])
+    @user = User.find(params[:id])
   end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      flash[:notice] = "募集要項を更新しました。"
+      redirect_to post_path(post)
+    else
+      @post = user
+      render :edit
+    end
+  end
+  
+  private
   
   def post_params
     params.require(:post).permit(:min_age, :max_age, :min_height, :max_height, :status, :directionality, :experience, :place, :frequency, :comment)
