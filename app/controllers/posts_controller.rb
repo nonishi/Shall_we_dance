@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  
+
   def new
     @post = Post.new
   end
-  
+
   def create
     post = Post.new(post_params)
     post.user_id = current_user.id
@@ -20,20 +20,21 @@ class PostsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def index
-    @posts =Post.all
+    @posts = Post.page(params[:page]).per(10)
+    @users = User.page(params[:page]).per(10)
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @user = User.find(params[:id])
   end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     post = Post.find(params[:id])
     if post.update(post_params)
@@ -44,9 +45,9 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(:min_age, :max_age, :min_height, :max_height, :status, :directionality, :experience, :place, :frequency, :comment)
   end
