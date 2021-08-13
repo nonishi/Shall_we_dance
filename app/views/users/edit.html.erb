@@ -23,11 +23,11 @@
         </div>
         <div class="field">
           <%= f.label :age, "年齢" %><br/>
-          <%= f.number_field :age, min: 0, max: 100 %>
+          <%= f.number_field :age, min: 0, max: 100 %>歳
         </div>
         <div class="field">
           <%= f.label :height, "身長" %><br/>
-          <%= f.number_field :height, min: 100, max: 200 %>
+          <%= f.number_field :height, min: 100, max: 200 %>cm
         </div>
         <div class="field">
           <%= f.label :weight, "体重・体型" %><br/>
@@ -39,7 +39,7 @@
         </div>
         <div class="field">
           <%= f.label :experience, "社交ダンス歴" %><br/>
-          <%= f.select :experience, User.histories.keys.to_a, include_blank: "選択して下さい" %>
+          <%= f.select :experience, User.experiences.keys.to_a, include_blank: "選択して下さい" %>
         </div>
         <div class="field">
           <%= f.label :grade, "持ち級" %><br/>

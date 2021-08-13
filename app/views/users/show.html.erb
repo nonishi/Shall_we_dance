@@ -19,11 +19,11 @@
         </tr>
         <tr>
           <th>年齢</th>
-          <td><%= @user.age %></td>
+          <td><%= @user.age %>歳</td>
         </tr>
         <tr>
           <th>身長</th>
-          <td><%= @user.height %></td>
+          <td><%= @user.height %>cm</td>
         </tr>
         <tr>
           <th>体重・体型</th>
@@ -47,6 +47,11 @@
         </tr>
       </table>
       <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %>
+      <% if Post.where(user_id: @user_id).exists? %>
+        <%= link_to "自分の募集要項を見る", post_path(@user), class: "btn btn-success" %>
+      <% else %>
+        <%= link_to "募集要項を作成する", new_post_path, class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>

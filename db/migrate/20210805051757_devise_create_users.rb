@@ -39,7 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :height
       t.string :weight
       t.integer :area, null: false, default: 0
-      t.string :experience
+      t.integer :experience
       t.string :grade
       t.text :introduction
       t.integer :status, null: false, default: 0

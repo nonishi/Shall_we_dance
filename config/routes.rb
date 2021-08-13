@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about'
 
   resources :users, only: [:index, :show, :edit, :update]
-  resources :posts, except: [:new]
+  resources :posts
   resources :favorites, only: [:index, :create, :destroy]
   resources :chats, only: [:show, :create]
 end

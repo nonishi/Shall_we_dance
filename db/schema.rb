@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_055958) do
     t.integer "min_height"
     t.integer "max_height"
     t.integer "status", null: false
-    t.integer "type", null: false
+    t.integer "directionality", null: false
     t.integer "experience", null: false
     t.string "place"
     t.string "frequency"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_055958) do
     t.integer "height"
     t.string "weight"
     t.integer "area", default: 0, null: false
-    t.string "experience"
+    t.integer "experience"
     t.string "grade"
     t.text "introduction"
     t.integer "status", default: 0, null: false
