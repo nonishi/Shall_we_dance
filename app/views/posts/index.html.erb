@@ -15,32 +15,28 @@
             </td>
           </tr>
           <tr>
-            <th>投稿者</th>
+            <th class="post-th">投稿者</th>
             <td><%= link_to user.name, user_path(user) %>(<%= user.status %>)</td>
           </tr>
           <tr>
-            <th>募集コメント</th>
+            <th class="post-th">募集コメント</th>
             <td><%= post.comment %></td>
           </tr>
           <tr>
-            <th>希望種目</th>
+            <th class="post-th">希望種目</th>
             <td><%= post.directionality %></td>
           </tr>
           <tr>
-            <th>希望練習場所</th>
+            <th class="post-th">希望練習場所</th>
             <td><%= post.place %></td>
           </tr>
           <tr>
-            <th>希望練習頻度</th>
+            <th class="post-th">希望練習頻度</th>
             <td><%= post.frequency %></td>
           </tr>
         </table>
-        <%= link_to "詳細を見る", post_path(post), class: "btn btn-success" %>
-        <% if post.favorited_by?(current_user) %>
-          <%= link_to "気になる解除", post_favorites_path(post), class: "btn btn-danger", method: :delete %>
-        <% else %>
-          <%= link_to "気になる", post_favorites_path(post), class: "btn btn-info", method: :post %>
-        <% end %>
+        <%= link_to "詳細を見る", post_path(post), class: "btn btn-success" %></td>
+        <span class="favorite-btn_<%= post.id %>"><%= render 'favorites/favorite-btn', post: post %></span>
       <% end %>
       <%= paginate @posts %>
     </div>
