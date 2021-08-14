@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-7 mx-auto">
       <h2>募集一覧</h2>
+      <%= link_to "新しい順", posts_path(sort: 'created_at DESC') %> | <%= link_to "古い順", posts_path(sort: 'created_at ASC') %>
       <% @posts.zip(@users) do |post, user| %>
         <table class="table mt-5">
           <tr>
@@ -19,8 +20,8 @@
             <td><%= link_to user.name, user_path(user) %>(<%= user.status %>)</td>
           </tr>
           <tr>
-            <th class="post-th">募集コメント</th>
-            <td><%= post.comment %></td>
+            <th>年齢</th>
+            <td><%= user.age %>歳</td>
           </tr>
           <tr>
             <th class="post-th">希望種目</th>
@@ -31,8 +32,8 @@
             <td><%= post.place %></td>
           </tr>
           <tr>
-            <th class="post-th">希望練習頻度</th>
-            <td><%= post.frequency %></td>
+            <th class="post-th">募集コメント</th>
+            <td><%= post.comment %></td>
           </tr>
         </table>
         <%= link_to "詳細を見る", post_path(post), class: "btn btn-success" %></td>

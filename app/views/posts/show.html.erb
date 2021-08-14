@@ -39,6 +39,14 @@
           <th>募集コメント</th>
           <td><%= @post.comment %></td>
         </tr>
+        <tr>
+          <th>作成日</th>
+          <td><%= @post.created_at.to_s(:datetime_jp) %></td>
+        </tr>
+        <tr>
+          <th>最終更新日</th>
+          <td><%= @post.updated_at.to_s(:datetime_jp) %></td>
+        </tr>
       </table>
       <% if @post.user_id == current_user.id %>
         <%= link_to "募集要項編集", edit_post_path(@post), class: "btn btn-success" %>

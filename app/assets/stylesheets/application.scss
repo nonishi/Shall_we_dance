@@ -15,6 +15,13 @@
  */
 @import "bootstrap";
 
+#notice{
+  font-weight: 300;
+  background-color: #99cc65;
+  line-height: 50px;
+  text-align: center;
+}
+
 .navbar{
   display: flex;
   flex-direction: row;
