@@ -15,6 +15,33 @@
  */
 @import "bootstrap";
 
+body{
+  font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", seri
+}
+
+a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+a::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .3s;
+}
+
+a:hover::after {
+  transform: scale(1, 1);
+}
+
 #notice{
   font-weight: 300;
   background-color: #99cc65;
@@ -22,16 +49,20 @@
   text-align: center;
 }
 
-.navbar{
+.navbar-brand {
+  font-size: 32px;
+}
+
+.navbar {
   display: flex;
   flex-direction: row;
 }
 
-.field{
+.field {
   margin-bottom: 13px;
 }
 
-.field label{
+.field label {
   font-weight: 700;
   font-size: 15px;
   padding-left: 2px;

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one :post, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts,  through: :favorites, source: :post
   has_many :room_users
   has_many :chats
 

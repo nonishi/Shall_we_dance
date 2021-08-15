@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-light bg-light">
     <div class="container">
-      <%= link_to "Shall we dance?", root_path, class: "navbar-brand" %>
+      <%= link_to "Shall We Dance?", root_path, class: "navbar-brand" %>
       <% if user_signed_in? %>
         <div class="ml-5">ようこそ！<%= current_user.name %>さん</div>
       <% end %>

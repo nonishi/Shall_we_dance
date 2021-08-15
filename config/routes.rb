@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about'
 
   resources :users, only: [:index, :show, :edit, :update]
+  get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
+
   resources :posts do
     resource :favorites, only: [:create, :destroy]
   end
+
   resources :chats, only: [:show, :create]
 end

@@ -4,17 +4,16 @@
     <title>ShallWeDance</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-      <main>
-        <p id="notice"><%= notice %></p>
-        <%= yield %>
-      </main>
-    <%= render 'layouts/footer' %>
+    <main>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </main>
   </body>
 </html>

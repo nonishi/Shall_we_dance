@@ -22,8 +22,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(10).order(params[:sort])
-    @users = User.page(params[:page]).per(10).order(params[:sort])
+    @posts = Post.page(params[:page]).order(params[:sort])
+    @users = User.page(params[:page]).order(params[:sort])
   end
 
   def show
