@@ -11,6 +11,17 @@ class User < ApplicationRecord
   has_many :chats
 
   attachment :profile_image
+  
+  with_options presence: true do
+    validates :name
+    validates :target
+    validates :status
+    validates :age
+    validates :height
+    validates :experience
+    validates :club_status
+    validates :area
+  end
 
   enum area: {
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
