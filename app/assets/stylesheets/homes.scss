@@ -20,3 +20,38 @@
   font-size: 48px;
   line-height: 60px;
 }
+
+#about {
+  display: flex;
+  justify-content: center;
+  background-color: #ECEFF1;
+}
+
+.about-container {
+  width: 100%;
+  text-align: center;
+}
+
+.about-title{
+  margin-top: 90px;
+  color: #000;
+  font-size: 32px;
+  text-align: center;
+  position: relative;
+}
+
+.about-title::after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background-color: #EC715F;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: -8px;
+}
+
+.about-text {
+  line-height: 1.7rem;
+}

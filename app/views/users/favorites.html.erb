@@ -1,17 +1,11 @@
+<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
       <h2>気になる一覧</h2>
-      <table class="table">
-        <tr>
-          <th>投稿者</th>
-          <th>募集コメント</th>
-        </tr>
         <% @posts.each do |post| %>
-        <tr>
-          <td><%= link_to User.find(post.id).name, user_path(post.id) %></td>
-          <td><%= post.comment %></td>
-        </tr>
+        <% user = User.find(post.id) %>
+          <%= render "posts/index", post: post, user: user %>
         <% end %>
       </table>
     </div>

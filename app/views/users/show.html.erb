@@ -1,3 +1,4 @@
+<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
@@ -26,20 +27,12 @@
           <td><%= @user.height %>cm</td>
         </tr>
         <tr>
-          <th>体重・体型</th>
-          <td><%= @user.weight %></td>
-        </tr>
-        <tr>
           <th>地域</th>
           <td><%= @user.area %></td>
         </tr>
         <tr>
           <th>社交ダンス歴</th>
           <td><%= @user.experience %>(学連：<%= @user.club_status %>）</td>
-        </tr>
-        <tr>
-          <th>持ち級</th>
-          <td><%= @user.grade %></td>
         </tr>
         <tr>
           <th>自己紹介</th>

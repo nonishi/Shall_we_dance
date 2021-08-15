@@ -1,3 +1,4 @@
+<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-2">
@@ -27,6 +28,14 @@
           <%= f.label :status, 'プロ', value: "プロ" %>
         </div>
         <div class="field">
+          <%= f.label :age, "年齢" %><br/>
+          <%= f.number_field :age, min: 0, max: 100 %>歳
+        </div>
+        <div class="field">
+          <%= f.label :height, "身長" %><br/>
+          <%= f.number_field :height, min: 100, max: 200 %>cm
+        </div>
+        <div class="field">
           <%= f.label :experience, "ダンス歴" %><br/>
           <%= f.select :experience, User.experiences.keys.to_a, include_blank: "選択して下さい" %>
         </div>
@@ -37,6 +46,10 @@
         <div class="field">
           <%= f.label :area, "地域" %><br/>
           <%= f.select :area, User.areas.keys.to_a, include_blank: "選択して下さい" %>
+        </div>
+        <div class="field">
+          <%= f.label :introduction, "自己紹介(任意)" %><br/>
+          <%= f.text_area :introduction, size: "50x5" %>
         </div>
         <div class="field">
           <%= f.label :password, "パスワード" %>

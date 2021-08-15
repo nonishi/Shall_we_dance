@@ -19,13 +19,13 @@ body{
   font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", seri
 }
 
-a {
+.nav-item a {
   position: relative;
   display: inline-block;
   text-decoration: none;
 }
 
-a::after {
+.nav-item a::after {
   position: absolute;
   bottom: -4px;
   left: 0;
@@ -38,7 +38,7 @@ a::after {
   transition: transform .3s;
 }
 
-a:hover::after {
+.nav-item a:hover::after {
   transform: scale(1, 1);
 }
 
@@ -66,4 +66,8 @@ a:hover::after {
   font-weight: 700;
   font-size: 15px;
   padding-left: 2px;
+}
+
+.login {
+  height: 100vh;
 }

@@ -1,3 +1,4 @@
+<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
@@ -30,10 +31,6 @@
           <%= f.number_field :height, min: 100, max: 200 %>cm
         </div>
         <div class="field">
-          <%= f.label :weight, "体重・体型" %><br/>
-          <%= f.text_field :weight, size: 30  %>
-        </div>
-        <div class="field">
           <%= f.label :area, "地域" %><br/>
           <%= f.select :area, User.areas.keys.to_a, include_blank: "選択して下さい" %>
         </div>
@@ -42,12 +39,8 @@
           <%= f.select :experience, User.experiences.keys.to_a, include_blank: "選択して下さい" %>
         </div>
         <div class="field">
-          <%= f.label :grade, "持ち級" %><br/>
-          <%= f.text_field :grade, size: 30 %>
-        </div>
-        <div class="field">
           <%= f.label :introduction, "自己紹介" %><br/>
-          <%= f.text_area :introduction, size: "30x3" %>
+          <%= f.text_area :introduction, size: "50x5" %>
         </div>
         <div class="actions">
           <%= f.submit "プロフィール更新", class: "btn btn-success" %>
