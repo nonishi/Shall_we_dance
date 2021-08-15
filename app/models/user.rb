@@ -14,7 +14,6 @@ class User < ApplicationRecord
   
   with_options presence: true do
     validates :name
-    validates :target
     validates :status
     validates :age
     validates :height
@@ -22,6 +21,7 @@ class User < ApplicationRecord
     validates :club_status
     validates :area
   end
+  validates :target, inclusion: { in: [true, false] }
 
   enum area: {
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

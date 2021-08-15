@@ -1,9 +1,9 @@
 <%= render 'layouts/header' %>
-<div class="container login">
+<div class="container-fluid sign_in">
   <div class="row">
     <div class="mx-auto mt-2">
-      <h2>ログイン</h2>
-      <p><span style="background-color:#fc9">会員の方はこちらからログイン</span></p>
+      <h1 class="text-center">Shall We Dance?</h1>
+      <h2 class="text-center">ログイン</h2>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br/>
@@ -13,11 +13,11 @@
           <%= f.label :password, "パスワード" %><br/>
           <%= f.password_field :password, size: 30 %>
         </div>
-        <div class="actions">
+        <div class="actions text-center">
           <%= f.submit "ログイン", class: "btn btn-success" %>
         </div>
       <% end %>
-      <p class="mt-5"><span style="background-color:#fc9">会員登録がお済みでない方</span></p>
+      <p class="mt-5"><span style="background-color:#fc9">新規登録がお済みでない方</span></p>
       <p><%= link_to "こちら", new_user_registration_path %> から新規登録を行ってください。</p>
     </div>
   </div>

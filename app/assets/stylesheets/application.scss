@@ -42,6 +42,10 @@ body{
   transform: scale(1, 1);
 }
 
+ul {
+  list-style: none;
+}
+
 #notice{
   font-weight: 300;
   background-color: #99cc65;
@@ -68,8 +72,9 @@ body{
   padding-left: 2px;
 }
 
-.login {
-  height: 100vh;
+.sign_in {
+  height: 95vh;
+  background-color: #ECEFF1;
 }
 
 .sign_up {

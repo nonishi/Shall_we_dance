@@ -4,6 +4,7 @@ ja:
       user:
         name: 名前
         age: 年齢
+        target: 募集対象
         height: 身長
         experience: ダンス歴
         club_status: 学連経験
