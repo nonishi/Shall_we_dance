@@ -3,15 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #top {
-  background-image: url(ballerina-2878011_1920.jpg);
+  background-image: url(wedding-1605322_1280.jpg);
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+  position: relative;
 }
 
 .text-box {
-  margin-left: 60px;
-  margin-top: 35vh;
+  position: absolute;
+  top: 48vh;
+  left: 60px;
   width: 40%;
 }
 

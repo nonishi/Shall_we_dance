@@ -1,11 +1,9 @@
-<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
       <h2>気になる一覧</h2>
         <% @posts.each do |post| %>
-        <% user = User.find(post.id) %>
-          <%= render "posts/index", post: post, user: user %>
+          <%= render "posts/index", post: post, user: post.user %>
         <% end %>
       </table>
     </div>

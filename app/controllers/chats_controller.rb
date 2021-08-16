@@ -12,7 +12,7 @@ class ChatsController < ApplicationController
       RoomUser.create(user_id: current_user.id, room_id: @room.id)
       RoomUser.create(user_id: @user.id, room_id: @room.id)
     end
-    
+
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
   end
@@ -20,6 +20,15 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
+    visited_user = RoomUser.where(room_id: @chat.room_id).where.not(user_id: current_user.id).first
+    notification = current_user.active_notifications.new(
+      room_id: @chat.room_id,
+      chat_id: @chat.id,
+      visited_id: visited_user.user_id,
+      visitor_id: current_user.id,
+      action: 'dm'
+    )
+    notification.save if notification.valid?
     redirect_to request.referer
   end
 

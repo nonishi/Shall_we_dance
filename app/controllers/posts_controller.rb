@@ -22,13 +22,21 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).order(params[:sort])
-    @users = User.page(params[:page]).order(params[:sort])
+    @posts = Post.page(params[:page])
+    if params[:sort].present?
+      if params[:sort] == "new"
+        @posts = @posts.order('created_at DESC')
+      else
+        @posts = @posts.order('created_at ASC')
+      end
+    else
+      @posts = @posts.order('created_at DESC')
+    end
   end
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(params[:id])
+    @user = @post.user
   end
 
   def edit

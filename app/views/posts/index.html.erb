@@ -1,11 +1,10 @@
-<%= render 'layouts/header' %>
 <div class="contianer">
   <div class="row">
     <div class="col-7 mx-auto">
       <h2>募集一覧</h2>
-      <%= link_to "新しい順", posts_path(sort: 'created_at DESC') %> | <%= link_to "古い順", posts_path(sort: 'created_at ASC') %>
-      <% @posts.zip(@users) do |post, user| %>
-        <%= render "index", post: post, user: user %>
+      <%= link_to "新しい順", posts_path(sort: 'new') %> | <%= link_to "古い順", posts_path(sort: 'old') %>
+      <% @posts.each do |post| %>
+        <%= render "index", post: post, user: post.user %>
       <% end %>
       <%= paginate @posts %>
     </div>

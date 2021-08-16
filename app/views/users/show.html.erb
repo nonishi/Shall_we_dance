@@ -1,11 +1,16 @@
-<%= render 'layouts/header' %>
 <div class="container-fluid">
   <div class="row mypage-main">
     <div class="side_img">
-      <h1 class="mypage-title text-center">My Page</h1>
+      <h1 class="mypage-title text-center">
+        <% if current_user == @user %>
+          My Page
+        <% else %>
+          <%= @user.name %>さんのPage
+        <% end %>
+      </h1>
     </div>
     <div class="col-5 text-left ml-2 mt-2">
-      <table class="table">
+      <table class="table table-bordered">
         <tr><%= attachment_image_tag @user, :profile_image, size: "180x180", fallback: "no_image.jpg", style: "border-radius: 50%;" %></tr>
         <tr>
           <th>募集状況</th>
@@ -38,7 +43,7 @@
           <td><%= @user.experience %>(学連：<%= @user.club_status %>）</td>
         </tr>
         <tr>
-          <th>自己紹介</th>
+          <th height="150">自己紹介</th>
           <td><%= @user.introduction %></td>
         </tr>
       </table>
@@ -48,28 +53,32 @@
         <% if @user.id == current_user.id %>
           <li class="nav-item">
             <%= link_to edit_user_path(@user), class: "btn" do %>
-              <i class="fas fa-user-edit"></i> プロフィール編集
+              <i class="fas fa-user-edit fa-lg"></i> プロフィール編集
             <% end %>
           </li>
           <li class="nav-item">
             <% if Post.where(user_id: @user.id).exists? %>
-              <%= link_to post_path(@user), class: "btn" do %>
-                <i class="fas fa-edit"></i> 自分の募集要項を見る
+              <%= link_to post_path(@user.post), class: "btn" do %>
+                <i class="fas fa-edit fa-lg"></i> 自分の募集要項を見る
               <% end %>
             <% else %>
               <%= link_to new_post_path, class: "btn" do %>
-                <i class="fas fa-edit"></i> 募集要項を作成する
+                <i class="fas fa-edit fa-lg"></i> 募集要項を作成する
               <% end %>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to user_favorites_path(@user), class: "btn" do %>
-              <i class="fas fa-heart"></i> 気になる一覧
+              <i class="fas fa-heart fa-lg"></i> 気になる一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to root_path, class: "btn" do %>
-              <i class="fas fa-envelope"></i> メッセージ通知
+            <%= link_to notifications_path, class: "btn" do %>
+              <% if unchecked_notifications.any? %>
+                <i class="fas fa-bell fa-lg faa-flash animated"></i> 通知一覧
+              <% else %>
+                <i class="fas fa-bell fa-lg"></i> 通知一覧
+              <% end %>
             <% end %>
           </li>
         <% end %>

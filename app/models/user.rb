@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :favorite_posts,  through: :favorites, source: :post
   has_many :room_users
   has_many :chats
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   attachment :profile_image
   
