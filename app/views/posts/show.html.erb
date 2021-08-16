@@ -1,11 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
-      <h2>募集詳細</h2>
+    <div class="col-6 mx-auto mt-3">
+      <h2 class="text-center">募集詳細</h2>
       <table class="table">
         <tr>
-          <th>名前</th>
-          <td><%= link_to @user.name, user_path(@user) %></td>
+          <th>投稿者</th>
+          <td><%= link_to @user.name, user_path(@user) %> (<%= @user.age %>歳、<%= @user.height %>cm)</td>
+        </tr>
+        <tr>
+          <th>地域</th>
+          <td><%= @user.area %></td>
+        </tr>
+        <tr>
+          <th>社交ダンス歴</th>
+          <td><%= @user.experience %>(学連：<%= @user.club_status %>）</td>
+        </tr>
+        <tr>
+          <th>その他(持ち級など)</th>
+          <td><%= @user.introduction %></td>
         </tr>
         <tr>
           <th>プロ・アマ希望</th>
@@ -36,12 +48,8 @@
           <td><%= @post.frequency %></td>
         </tr>
         <tr>
-          <th>募集コメント</th>
+          <th height="150">募集コメント</th>
           <td><%= @post.comment %></td>
-        </tr>
-        <tr>
-          <th>作成日</th>
-          <td><%= @post.created_at.to_s(:datetime_jp) %></td>
         </tr>
         <tr>
           <th>最終更新日</th>
