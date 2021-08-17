@@ -3,19 +3,19 @@
       <th>【<%= user.area %>】</th>
       <td>
         <% if user.target == true %>
-          <%= post.status %>リーダー募集
+          リーダー募集
         <% else %>
-          <%= post.status %>パートナー募集
+          パートナー募集
         <% end %>
       </td>
     </tr>
     <tr>
       <th class="post-th">投稿者</th>
-      <td><%= user.name %>(<%= user.status %>)</td>
+      <td>【<%= user.status %>】<%= user.name %>(<%= user.age %>歳、<%= user.height %>cm)</td>
     </tr>
     <tr>
-      <th>年齢</th>
-      <td><%= user.age %>歳</td>
+      <th class="post-th">プロ・アマ希望</th>
+      <td><%= post.status %></td>
     </tr>
     <tr>
       <th class="post-th">希望種目</th>

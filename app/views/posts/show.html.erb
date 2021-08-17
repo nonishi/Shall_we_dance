@@ -56,11 +56,13 @@
           <td><%= @post.updated_at.to_s(:datetime_jp) %></td>
         </tr>
       </table>
-      <% if @post.user_id == current_user.id %>
-        <%= link_to "募集要項編集", edit_post_path(@post), class: "btn btn-success" %>
-      <% else %>
-        <span class="favorite-btn_<%= @post.id %>"><%= render 'favorites/favorite-btn', post: @post %></span>
-        <%= link_to "メッセージを送る", chat_path(@user), class: "btn btn-primary" %>
+      <% if user_signed_in? %>
+        <% if @post.user_id == current_user.id %>
+          <%= link_to "募集要項編集", edit_post_path(@post), class: "btn btn-success" %>
+        <% else %>
+          <span class="favorite-btn_<%= @post.id %>"><%= render 'favorites/favorite-btn', post: @post %></span>
+          <%= link_to "メッセージを送る", chat_path(@user), class: "btn btn-primary" %>
+        <% end %>
       <% end %>
       <%= link_to "募集一覧へ", posts_path, class: "btn btn-info" %>
     </div>

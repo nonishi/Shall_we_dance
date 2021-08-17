@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @post = Post.new
@@ -22,15 +22,21 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @search_params = {} if @search_params.nil?
+    @posts = Post.joins(:user).page(params[:page])
     if params[:sort].present?
-      if params[:sort] == "new"
-        @posts = @posts.order('created_at DESC')
+      case params[:sort]
+      when 'new'
+        @posts = @posts.order(:created_at, :desc)
+      when 'old'
+        @posts = @posts.order(:created_at, :asc)
+      when 'young'
+        @posts = @posts.order('users.age ASC')
       else
-        @posts = @posts.order('created_at ASC')
+        @posts = @posts.order('users.age DESC')
       end
     else
-      @posts = @posts.order('created_at DESC')
+      @posts = @posts.order(:created_at, :desc)
     end
   end
 
@@ -54,9 +60,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @search_params = post_search_params
+    @posts = Post.joins(:user).search(post_search_params).page(params[:page])
+    render :index
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:min_age, :max_age, :min_height, :max_height, :status, :directionality, :experience, :place, :frequency, :comment)
+  end
+
+  def post_search_params
+    params.fetch(:search, {}).permit(:height_from, :height_to, :age_from, :age_to, :area)
   end
 end

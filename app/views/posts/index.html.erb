@@ -1,8 +1,31 @@
 <div class="contianer">
   <div class="row">
+    <div class="col-4 mx-auto mt-3">
+      <h3>条件検索</h3>
+      <%= form_with(scope: :search, url: search_posts_path, method: :get, local: true) do |f| %>
+        <div>
+          <%= f.label :height, "身長" %><br/>
+          <%= f.number_field :height_from, min: 100, max: 200, value: @search_params[:height_from] %> ~
+          <%= f.number_field :height_to, min: 100, max: 200, value: @search_params[:height_to] %>
+        </div>
+        <div>
+          <%= f.label :age, "年齢" %><br/>
+          <%= f.number_field :age_from, min: 0, max: 100, value: @search_params[:age_from] %> ~
+          <%= f.number_field :age_to, min: 0, max: 100, value: @search_params[:age_to] %>
+        </div>
+        <div>
+          <%= f.label :area, "地域" %><br/>
+          <%= f.select :area, User.areas.keys.to_a, include_blank: "選択して下さい", selected: @search_params[:area] %>
+        </div>
+        <%= f.submit '検索', class: "btn" %>
+      <% end %>
+    </div>
     <div class="col-6 mx-auto mt-3">
       <h2 class="text-center">募集一覧</h2>
-      <%= link_to "新しい順", posts_path(sort: 'new') %> | <%= link_to "古い順", posts_path(sort: 'old') %>
+      <span>
+        新着順 <%= link_to "(降順)", posts_path(sort: 'new') %>・<%= link_to "(昇順)", posts_path(sort: 'old') %> |
+        年齢順 <%= link_to "(降順)", posts_path(sort: 'old_age') %>・<%= link_to "(昇順)", posts_path(sort: 'young') %>
+      </span>
       <% @posts.each do |post| %>
         <%= render "index", post: post, user: post.user %>
       <% end %>

@@ -8,14 +8,18 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'homes#top'
-
+  
   resources :users, only: [:index, :show, :edit, :update]
   get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
 
   resources :posts do
+    collection do
+      get :search
+    end
+    
     resource :favorites, only: [:create, :destroy]
   end
-
+  
   resources :chats, only: [:show, :create]
   
   resources :notifications, only: :index

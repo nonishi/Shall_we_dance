@@ -36,4 +36,21 @@ class Post < ApplicationRecord
     end
   end
   
+  scope :search, -> (search_params) do
+    return if search_params.blank?
+
+    height_from(search_params[:height_from])
+      .height_to(search_params[:height_to])
+      .age_from(search_params[:age_from])
+      .age_to(search_params[:age_to])
+      .area_like(search_params[:area])
+  end
+
+  scope :height_from, -> (from) { where('height >= ?', from) if from.present? }
+  scope :height_to, -> (to) { where('height <= ?', to) if to.present? }
+  scope :age_from, -> (from) { where('age >= ?', from) if from.present? }
+  scope :age_to, -> (to) { where('age <= ?', to) if to.present? }
+  scope :area_like, -> (area) { where(users: {area: area.to_sym}) if area.present? }
+
 end
+

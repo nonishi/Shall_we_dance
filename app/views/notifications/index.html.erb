@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container notification-index">
   <div class="row">
     <div class="col-md-6 mx-auto">
-    <h2 class="text-center">通知一覧</h2>
+    <h2 class="text-center mt-3">通知一覧</h2>
       <% @notifications.each do |notification| %>
         <div>
           <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
@@ -15,6 +15,9 @@
           <%= time_ago_in_words(notification.created_at)%>前
         </div> 
         <hr>
+      <% end %>
+      <%= link_to user_path(current_user), class: "btn" do %>
+        戻る<i class="fas fa-arrow-right fa-lg"></i>
       <% end %>
       <%= paginate @notifications %>
     </div>
