@@ -2,6 +2,83 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.chat-show {
+.container-fluid {
   min-height: 100vh;
+  background: #ECEFF1;
 }
+
+.chat {
+  width: 450px;
+  background: #fff;
+}
+
+.balloon {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon .icon {
+  float: left;
+  margin-right: -50px;
+}
+
+.balloon .chatting {
+  width: 100%;
+  text-align: left;
+}
+
+.other-says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 60px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.other-says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.other-says p {
+  margin: 0;
+  padding: 0;
+}
+
+.my-says {
+  margin: 10px 0;
+  text-align: right;
+}
+
+.my-says p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.my-says p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+

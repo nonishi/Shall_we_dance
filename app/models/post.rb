@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   enum status: { "問わない": 0, "アマチュア": 1, "プロ": 2 }, _prefix: true
-  enum directionality: { 
+  enum directionality: {
     "問わない": 0,
     "モダンのみ": 1,
     "モダン中心で両方": 2,
@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def create_notification_favorite(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
     if temp.blank?
@@ -35,22 +35,26 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   scope :search, -> (search_params) do
     return if search_params.blank?
 
-    height_from(search_params[:height_from])
+    target(search_params[:target]) 
+      .status(search_params[:status])
+      .height_from(search_params[:height_from])
       .height_to(search_params[:height_to])
       .age_from(search_params[:age_from])
       .age_to(search_params[:age_to])
-      .area_like(search_params[:area])
+      .area(search_params[:area])
   end
-
+  
+  scope :target, -> (target) { where(users: { target: target } ) if target.present? }
+  scope :status, -> (status) { where(users: { status: status.to_sym } ) if status.present? }
   scope :height_from, -> (from) { where('height >= ?', from) if from.present? }
   scope :height_to, -> (to) { where('height <= ?', to) if to.present? }
   scope :age_from, -> (from) { where('age >= ?', from) if from.present? }
   scope :age_to, -> (to) { where('age <= ?', to) if to.present? }
-  scope :area_like, -> (area) { where(users: {area: area.to_sym}) if area.present? }
-
+  scope :area, -> (area) { where(users: { area: area.to_sym } ) if area.present? }
+  
 end
 

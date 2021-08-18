@@ -1,0 +1,18 @@
+<div class="contianer">
+  <div class="row post-index">
+    <div class="my-3 search">
+      <%= render 'search', search_params: @search_params %>
+    </div>
+    <div class="my-3 list">
+      <h2>検索結果一覧<span class="small">(全<%= @posts.count %>件)</span></h2>
+      <% if @posts.exists? %>
+        <% @posts.each do |post| %>
+          <%= render 'index', post: post, user: post.user %>
+        <% end %>
+        <%= paginate @posts %>
+      <% else %>
+        <p>条件に合う方は見つかりませんでした。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

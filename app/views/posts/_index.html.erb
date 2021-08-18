@@ -1,33 +1,37 @@
 <table class="table mt-5">
-    <tr>
-      <th>【<%= user.area %>】</th>
-      <td>
-        <% if user.target == true %>
-          リーダー募集
-        <% else %>
-          パートナー募集
-        <% end %>
-      </td>
+  <% if user.target == true %>
+    <tr style="background-color: #FFD5EC;">
+      <th>【<%= user.area %>】 リーダー募集</th>
+      <td><%= link_to "詳細を見る", post_path(post) %></td>
     </tr>
-    <tr>
-      <th class="post-th">投稿者</th>
-      <td>【<%= user.status %>】<%= user.name %>(<%= user.age %>歳、<%= user.height %>cm)</td>
+  <% else %>
+    <tr style="background-color: #BAD3FF;">
+      <th>【<%= user.area %>】 パートナー募集</th>
+      <td><%= link_to "詳細を見る", post_path(post) %></td>
     </tr>
-    <tr>
-      <th class="post-th">プロ・アマ希望</th>
-      <td><%= post.status %></td>
-    </tr>
-    <tr>
-      <th class="post-th">希望種目</th>
-      <td><%= post.directionality %></td>
-    </tr>
-    <tr>
-      <th class="post-th">希望練習場所</th>
-      <td><%= post.place %></td>
-    </tr>
-    <tr>
-      <th class="post-th">募集コメント</th>
-      <td><%= post.comment %></td>
-    </tr>
-  </table>
-  <%= link_to "詳細を見る", post_path(post), class: "btn btn-success" %></td>
+  <% end %>
+  <tr>
+    <th class="post-th">投稿者</th>
+    <td>【<%= user.status %>】 <%= user.name %> (<%= user.age %>歳、<%= user.height %>cm)</td>
+  </tr>
+  <tr>
+    <th>社交ダンス歴</th>
+    <td><%= user.experience %> (学連：<%= user.club_status %>）</td>
+  </tr>
+  <tr>
+    <th class="post-th">プロ・アマ希望</th>
+    <td><%= post.status %></td>
+  </tr>
+  <tr>
+    <th class="post-th">希望種目</th>
+    <td><%= post.directionality %></td>
+  </tr>
+  <tr>
+    <th class="post-th">希望練習場所</th>
+    <td><%= post.place %></td>
+  </tr>
+  <tr>
+    <th class="post-th">募集コメント</th>
+    <td><%= post.comment %></td>
+  </tr>
+</table>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mypage-main">
-    <div class="mx-auto mt-3">
+    <div class="col-6 mx-auto mt-3">
       <h1 class="text-center">
         <% if current_user == @user %>
           My Page
@@ -8,8 +8,10 @@
           <%= @user.name %>さんのPage
         <% end %>
       </h1>
-      <table class="table">
-        <tr><%= attachment_image_tag @user, :profile_image, size: "180x180", fallback: "no_image.jpg", style: "border-radius: 50%;" %></tr>
+      <div class="text-center mt-5">
+        <%= attachment_image_tag @user, :profile_image, size: "180x180", fallback: "no_image.jpg", style: "border-radius: 50%;" %>
+      </div>
+      <table class="table mt-5">
         <tr>
           <th>募集状況</th>
           <td>
@@ -47,8 +49,8 @@
       </table>
     </div>
     <div>
-      <ul class="mt-5 text-left side_menu">
-        <% if @user.id == current_user.id %>
+      <% if @user.id == current_user.id %>
+        <ul class="mt-5 text-left side_menu">
           <li class="nav-item">
             <%= link_to edit_user_path(@user), class: "btn" do %>
               <i class="fas fa-user-edit fa-lg"></i> プロフィール編集
@@ -79,8 +81,38 @@
               <% end %>
             <% end %>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+        <div class="recommend mt-5 mb-3">
+          <h4>あなたにおすすめ</h4>
+          <% if @recommend_users.exists? %>
+            <% @recommend_users.each do |recommend_user| %>
+              <table>
+                <tr>
+                  <td class="recommend-td"><%= link_to recommend_user.name, user_path(recommend_user) %>さん</td>
+                  <td><%= link_to "詳細を見る", user_path(recommend_user), class: "btn btn-primary" %></td>
+                </tr>
+              </table>
+            <% end %>
+          <% else %>
+            <p>現在、見つかりません</p>
+          <% end %>
+        </div>
+      <% else %>
+        <ul class="mt-5 text-left side_menu">
+          <li class="nav-item">
+            <% if Post.where(user_id: @user.id).exists? %>
+              <%= link_to post_path(@user.post), class: "btn" do %>
+                <i class="far fa-address-book fa-lg"></i> <%= @user.name %>さんの募集要項を見る
+              <% end %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to chat_path(@user), class: "btn" do %>
+              <i class="fas fa-paper-plane fa-lg"></i> メッセージを送る
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @search_params = {} if @search_params.nil?
+    @search_params = {}
     @posts = Post.joins(:user).page(params[:page])
     if params[:sort].present?
       case params[:sort]
@@ -30,10 +30,18 @@ class PostsController < ApplicationController
         @posts = @posts.order(:created_at, :desc)
       when 'old'
         @posts = @posts.order(:created_at, :asc)
+      when 'old_age'
+        @posts = @posts.order('users.age DESC')
       when 'young'
         @posts = @posts.order('users.age ASC')
-      else
-        @posts = @posts.order('users.age DESC')
+      when 'high'
+        @posts = @posts.order('users.height DESC')
+      when 'low'
+        @posts = @posts.order('users.height ASC')
+      when 'long'
+        @posts = @posts.order('users.experience DESC')
+      when 'short'
+        @posts = @posts.order('users.experience ASC')
       end
     else
       @posts = @posts.order(:created_at, :desc)
@@ -63,7 +71,6 @@ class PostsController < ApplicationController
   def search
     @search_params = post_search_params
     @posts = Post.joins(:user).search(post_search_params).page(params[:page])
-    render :index
   end
 
   private
@@ -73,6 +80,6 @@ class PostsController < ApplicationController
   end
 
   def post_search_params
-    params.fetch(:search, {}).permit(:height_from, :height_to, :age_from, :age_to, :area)
+    params.fetch(:search, {}).permit(:target, :status, :height_from, :height_to, :age_from, :age_to, :area)
   end
 end

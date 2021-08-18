@@ -1,21 +1,32 @@
-<div class="container chat-show">
+<div class="container-fluid chat-show">
   <div class="row">
-    <div class="col-5 mx-auto mt-3">
-      <h2><%= @user.name %> さんとのチャット</h2>
-      <div style="width: 400px;">
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
-            <p style="text-align: right;"><%= chat.message %></p>
-          <% else %>
-            <p style="text-align: left;"><%= chat.message %></p>
-          <% end %>
+    <div class="col-5 mx-auto chat">
+      <h2 class="text-center my-3"><%= @user.name %> さんとのチャット</h2>
+      <% @chats.each do |chat| %>
+        <% if chat.user_id == current_user.id %>
+          <div class="my-says">
+            <p><%= chat.message %></p>
+          </div>
+        <% else %>
+          <div class="balloon">
+            <div class="icon">
+              <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no-image-icon.jpg", style: "border-radius: 50%;" %>
+            </div>
+            <div class="chatting">
+              <div class="other-says">
+                <p><%= chat.message %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="my-3 text-right">
+        <%= form_with model: @chat, local: true do |f| %>
+          <%= f.text_field :message, size: 30 %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信" %>
         <% end %>
       </div>
-      <%= form_with model: @chat, local: true do |f| %>
-        <%= f.text_field :message %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "送信" %>
-      <% end %>
     </div>
   </div>
 </div>
