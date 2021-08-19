@@ -5,6 +5,9 @@
       <h2 class="text-center">ログイン</h2>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
+        <% unless alert.blank? %>
+          <strong class="text-danger"><%= alert %></strong>
+        <% end %>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br/>
           <%= f.email_field :email, size: 30 %>

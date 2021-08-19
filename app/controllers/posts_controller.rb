@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def index
     @search_params = {}
     @all_posts = Post.all
-    @posts = Post.joins(:user).page(params[:page])
+    @posts = Post.includes(:user).page(params[:page])
     if params[:sort].present?
       case params[:sort]
       when 'new'
@@ -71,8 +71,8 @@ class PostsController < ApplicationController
 
   def search
     @search_params = post_search_params
-    @all_posts = Post.joins(:user).search(post_search_params)
-    @posts = Post.joins(:user).search(post_search_params).page(params[:page])
+    @all_posts = Post.includes(:user).search(post_search_params)
+    @posts = @all_posts.page(params[:page])
   end
 
   private
