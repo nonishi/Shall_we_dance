@@ -3,17 +3,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @unchecked_notifications = current_user.passive_notifications.where(checked: false)
     if @user.post
       from_height = @user.post.min_height ||= 100
       to_height = @user.post.max_height ||= 200
       from_age = @user.post.min_age ||= 1
       to_age = @user.post.max_age ||= 100
       @recommend_users = User.where(
-          height: from_height..to_height, 
-          age: from_age..to_age, 
-          target: !@user.target, 
-          area: @user.area
-        ).where.not(id: current_user.id)
+        height: from_height..to_height,
+        age: from_age..to_age,
+        target: !@user.target,
+        area: @user.area
+      ).where.not(id: current_user.id)
     else
       @recommend_users = []
     end

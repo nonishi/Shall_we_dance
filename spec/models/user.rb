@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-	  it "有効な場合は保存されるか" do
+    it "有効な場合は保存されるか" do
       expect(FactoryBot.build(:user)).to be_valid
     end
 
@@ -61,6 +61,5 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(user).to be_invalid
       end
     end
-
   end
 end

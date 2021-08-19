@@ -75,7 +75,7 @@
           </li>
           <li class="nav-item">
             <%= link_to notifications_path, class: "btn" do %>
-              <% if unchecked_notifications.any? %>
+              <% if @unchecked_notifications.any? %>
                 <i class="fas fa-bell fa-lg faa-flash animated"></i> 通知一覧
               <% else %>
                 <i class="fas fa-bell fa-lg"></i> 通知一覧

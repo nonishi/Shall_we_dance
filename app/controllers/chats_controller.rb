@@ -1,18 +1,18 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.room_users.pluck(:room_id)
     room_users = RoomUser.find_by(user_id: @user.id, room_id: rooms)
 
-    unless room_users.nil?
-      @room = room_users.room
-    else
+    if room_users.nil?
       @room = Room.new
       @room.save
       RoomUser.create(user_id: current_user.id, room_id: @room.id)
       RoomUser.create(user_id: @user.id, room_id: @room.id)
+    else
+      @room = room_users.room
     end
 
     @chats = @room.chats
