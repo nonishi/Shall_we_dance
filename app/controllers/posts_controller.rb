@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
 
   def new
     @post = Post.new
@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 
   def index
     @search_params = {}
+    @all_posts = Post.all
     @posts = Post.joins(:user).page(params[:page])
     if params[:sort].present?
       case params[:sort]
@@ -70,6 +71,7 @@ class PostsController < ApplicationController
 
   def search
     @search_params = post_search_params
+    @all_posts = Post.joins(:user).search(post_search_params)
     @posts = Post.joins(:user).search(post_search_params).page(params[:page])
   end
 

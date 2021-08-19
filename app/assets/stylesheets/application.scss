@@ -42,7 +42,7 @@ body{
   transform: scale(1, 1);
 }
 
-#notice{
+.notice{
   font-weight: 300;
   background-color: #99cc65;
   line-height: 50px;
@@ -75,4 +75,9 @@ body{
 
 .sign_up {
   background-color: #ECEFF1;
+}
+
+// kaminari
+.pagination {
+  justify-content: center;
 }

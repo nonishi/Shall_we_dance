@@ -4,7 +4,7 @@
       <%= render 'search', search_params: @search_params %>
     </div>
     <div class="my-3 list">
-      <h2>検索結果一覧<span class="small">(全<%= @posts.count %>件)</span></h2>
+      <h2>検索結果一覧<span class="small">(全<%= @all_posts.count %>件)</span></h2>
       <% if @posts.exists? %>
         <% @posts.each do |post| %>
           <%= render 'index', post: post, user: post.user %>

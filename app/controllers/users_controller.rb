@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       to_height = @user.post.max_height ||= 200
       from_age = @user.post.min_age ||= 1
       to_age = @user.post.max_age ||= 100
-      @recommend_users = User.where(height: from_height..to_height, age: from_age..to_age, target: @user.target, area: @user.area).where.not(id: current_user.id)
+      @recommend_users = User.where(height: from_height..to_height, age: from_age..to_age, target: !@user.target, area: @user.area).where.not(id: current_user.id)
     else
       @recommend_users = []
     end

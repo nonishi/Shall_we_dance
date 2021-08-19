@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="notice"><%= flash[:notice] %></p>
   <div class="row mypage-main">
     <div class="col-6 mx-auto mt-3">
       <h1 class="text-center">
@@ -84,7 +85,7 @@
         </ul>
         <div class="recommend mt-5 mb-3">
           <h4>あなたにおすすめ</h4>
-          <% if @recommend_users.exists? %>
+          <% unless @recommend_users == [] %>
             <% @recommend_users.each do |recommend_user| %>
               <table>
                 <tr>
@@ -104,6 +105,8 @@
               <%= link_to post_path(@user.post), class: "btn" do %>
                 <i class="far fa-address-book fa-lg"></i> <%= @user.name %>さんの募集要項を見る
               <% end %>
+            <% else %>
+              <p>募集要項はまだありません</p>
             <% end %>
           </li>
           <li class="nav-item">

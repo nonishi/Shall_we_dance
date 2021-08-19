@@ -4,7 +4,7 @@
       <%= render 'search', search_params: @search_params %>
     </div>
     <div class="my-3 list">
-      <h2>募集一覧<span class="small">(全<%= @posts.count %>件)</span></h2>
+      <h2>募集一覧<span class="small">(全<%= @all_posts.count %>件)</span></h2>
       <span>
         新着順 <%= link_to "(降順)", posts_path(sort: 'new') %>・<%= link_to "(昇順)", posts_path(sort: 'old') %> |
         年齢順 <%= link_to "(降順)", posts_path(sort: 'old_age') %>・<%= link_to "(昇順)", posts_path(sort: 'young') %> |
