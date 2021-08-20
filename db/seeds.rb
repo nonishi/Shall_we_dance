@@ -40,3 +40,5 @@ User.all.each do |user|
     comment: ["頑張ります", "競技会に出たいです", "気軽にDMください"].sample,
   )
 end
+
+Admin.create(email: 'admin@example.com', password: 'password')

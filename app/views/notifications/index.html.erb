@@ -1,25 +1,29 @@
 <div class="container notification-index">
   <div class="row">
-    <div class="col-md-6 mx-auto">
-    <h2 class="text-center mt-3">通知一覧</h2>
-      <% @notifications.each do |notification| %>
-        <div>
-          <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
-          <% if notification.action == 'favorite' %>
-            あなたをいいねしました
-          <% elsif notification.action == 'dm' %>
-            あなたに<%= link_to "メッセージ", chat_path(notification.visitor) %>を送りました
-          <% end %>
-        </div>
-        <div class="small text-muted text-right">
-          <%= time_ago_in_words(notification.created_at)%>前
-        </div> 
-        <hr>
+    <div class="col-md-6 mx-auto my-5">
+    <h2 class="text-center mb-5">通知一覧</h2>
+      <% if @notifications.exists? %>
+        <% @notifications.each do |notification| %>
+          <div>
+            <%= link_to notification.visitor.name, user_path(notification.visitor) %>さんが
+            <% if notification.action == 'favorite' %>
+              あなたをいいねしました
+            <% elsif notification.action == 'dm' %>
+              あなたに<%= link_to "メッセージ", chat_path(notification.visitor) %>を送りました
+            <% end %>
+          </div>
+          <div class="small text-muted text-right">
+            <%= time_ago_in_words(notification.created_at)%>前
+          </div>
+          <hr>
+        <% end %>
+        <%= link_to user_path(current_user), class: "btn" do %>
+          戻る<i class="fas fa-arrow-right fa-lg"></i>
+        <% end %>
+        <%= paginate @notifications %>
+      <% else %>
+        <p class="text-center">通知はありません</p>
       <% end %>
-      <%= link_to user_path(current_user), class: "btn" do %>
-        戻る<i class="fas fa-arrow-right fa-lg"></i>
-      <% end %>
-      <%= paginate @notifications %>
     </div>
   </div>
 </div>

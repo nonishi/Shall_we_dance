@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    post 'users/sign_up/confirm', to: 'users/registrations#confirm'
+    get 'users/sign_up/complete', to: 'users/registrations#complete'
+  end
+  
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations',
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'homes#top'
 
