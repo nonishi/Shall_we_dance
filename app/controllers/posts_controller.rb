@@ -72,7 +72,6 @@ class PostsController < ApplicationController
   def search
     @search_params = post_search_params
     @all_posts = Post.includes(:user).search(post_search_params)
-    byebug
     if params[:sort].present?
       case params[:sort]
       when 'new'
@@ -95,7 +94,7 @@ class PostsController < ApplicationController
     else
       @posts = @all_posts.order(:created_at, :desc)
     end
-    # @posts = @all_posts.page(params[:page])
+    @posts = @posts.page(params[:page])
   end
 
   private

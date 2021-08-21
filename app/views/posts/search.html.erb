@@ -6,16 +6,24 @@
     <div class="my-3 list">
       <h2>検索結果一覧<span class="small">(全<%= @all_posts.count %>件)</span></h2>
       <span>
-        新着順 <%= link_to "(降順)", search_posts_path(sort: 'new') %>・<%= link_to "(昇順)", search_posts_path(sort: 'old') %> |
-        年齢順 <%= link_to "(降順)", search_posts_path(sort: 'old_age', search: { 'area' => params[:search][:area]}) %>・<%= link_to "(昇順)", search_posts_path(sort: 'young') %> |
-        身長順 <%= link_to "(降順)", search_posts_path(sort: 'high') %>・<%= link_to "(昇順)", search_posts_path(sort: 'low') %> |
-        ダンス歴 <%= link_to "(降順)", search_posts_path(sort: 'long') %>・<%= link_to "(昇順)", search_posts_path(sort: 'short') %>
+        新着順 
+        <%= link_to "(降順)", search_posts_path(sort: 'new', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %>・
+        <%= link_to "(昇順)", search_posts_path(sort: 'old', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %> |
+        年齢順 
+        <%= link_to "(降順)", search_posts_path(sort: 'old_age', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %>・
+        <%= link_to "(昇順)", search_posts_path(sort: 'young', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %> |
+        身長順 
+        <%= link_to "(降順)", search_posts_path(sort: 'high', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %>・
+        <%= link_to "(昇順)", search_posts_path(sort: 'low', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %> |
+        ダンス歴 
+        <%= link_to "(降順)", search_posts_path(sort: 'long', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %>・
+        <%= link_to "(昇順)", search_posts_path(sort: 'short', search: {"target"=>params[:search][:target], "status"=>params[:search][:status], "height_from"=>params[:search][:height_from], "height_to"=>params[:search][:height_to], "age_from"=>params[:search][:age_from], "age_to"=>params[:search][:age_to], "area"=>params[:search][:area]}) %>
       </span>
       <% if @posts.exists? %>
         <% @posts.each do |post| %>
           <%= render 'index', post: post, user: post.user %>
         <% end %>
-
+        <%= paginate @posts %>
       <% else %>
         <p>条件に合う方は見つかりませんでした。</p>
       <% end %>
