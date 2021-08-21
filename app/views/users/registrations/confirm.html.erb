@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid sign_up">
   <div class="row">
     <div class="col-6 mx-auto my-5">
       <h2 class="text-center mb-3">入力情報確認</h2>
@@ -55,20 +55,20 @@
         </tr>
       </table>
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-        <%= f.hidden_field :name, :value => params[:user][:name] %>
-        <%= f.hidden_field :email, :value => params[:user][:email] %>
-        <%= f.hidden_field :target, :value => params[:user][:target] %>
-        <%= f.hidden_field :status, :value => params[:user][:status] %>
-        <%= f.hidden_field :age, :value => params[:user][:age] %>
-        <%= f.hidden_field :height, :value => params[:user][:height] %>
-        <%= f.hidden_field :area, :value => params[:user][:area] %>
-        <%= f.hidden_field :experience, :value => params[:user][:experience] %>
-        <%= f.hidden_field :club_status, :value => params[:user][:club_status] %>
-        <%= f.hidden_field :introduction, :value => params[:user][:introduction] %>
-        <%= f.hidden_field :password, :value => params[:user][:password] %>
+        <%= hidden_field :user, :name, :value => params[:user][:name] %>
+        <%= hidden_field :user, :email, :value => params[:user][:email] %>
+        <%= hidden_field :user, :target, :value => params[:user][:target] %>
+        <%= hidden_field :user, :status, :value => params[:user][:status] %>
+        <%= hidden_field :user, :age, :value => params[:user][:age] %>
+        <%= hidden_field :user, :height, :value => params[:user][:height] %>
+        <%= hidden_field :user, :area, :value => params[:user][:area] %>
+        <%= hidden_field :user, :experience, :value => params[:user][:experience] %>
+        <%= hidden_field :user, :club_status, :value => params[:user][:club_status] %>
+        <%= hidden_field :user, :introduction, :value => params[:user][:introduction] %>
+        <%= hidden_field :user, :password, :value => params[:user][:password] %>
         <div class="actions text-center">
           <%= f.submit "修正する", class: "btn btn-danger", name: :back %>
-          <%= f.submit "新規登録", class: "btn btn-success" %>
+          <%= f.submit "登録する", class: "btn btn-success" %>
         </div>
       <% end %>
     </div>
