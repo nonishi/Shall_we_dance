@@ -72,7 +72,30 @@ class PostsController < ApplicationController
   def search
     @search_params = post_search_params
     @all_posts = Post.includes(:user).search(post_search_params)
-    @posts = @all_posts.page(params[:page])
+    byebug
+    if params[:sort].present?
+      case params[:sort]
+      when 'new'
+        @posts = @all_posts.order(:created_at, :desc)
+      when 'old'
+        @posts = @all_posts.order(:created_at, :asc)
+      when 'old_age'
+        @posts = @all_posts.order('users.age DESC')
+      when 'young'
+        @posts = @all_posts.order('users.age ASC')
+      when 'high'
+        @posts = @all_posts.order('users.height DESC')
+      when 'low'
+        @posts = @all_posts.order('users.height ASC')
+      when 'long'
+        @posts = @all_posts.order('users.experience DESC')
+      when 'short'
+        @posts = @all_posts.order('users.experience ASC')
+      end
+    else
+      @posts = @all_posts.order(:created_at, :desc)
+    end
+    # @posts = @all_posts.page(params[:page])
   end
 
   private

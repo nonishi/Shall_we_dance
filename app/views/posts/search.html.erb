@@ -5,11 +5,17 @@
     </div>
     <div class="my-3 list">
       <h2>検索結果一覧<span class="small">(全<%= @all_posts.count %>件)</span></h2>
+      <span>
+        新着順 <%= link_to "(降順)", search_posts_path(sort: 'new') %>・<%= link_to "(昇順)", search_posts_path(sort: 'old') %> |
+        年齢順 <%= link_to "(降順)", search_posts_path(sort: 'old_age', search: { 'area' => params[:search][:area]}) %>・<%= link_to "(昇順)", search_posts_path(sort: 'young') %> |
+        身長順 <%= link_to "(降順)", search_posts_path(sort: 'high') %>・<%= link_to "(昇順)", search_posts_path(sort: 'low') %> |
+        ダンス歴 <%= link_to "(降順)", search_posts_path(sort: 'long') %>・<%= link_to "(昇順)", search_posts_path(sort: 'short') %>
+      </span>
       <% if @posts.exists? %>
         <% @posts.each do |post| %>
           <%= render 'index', post: post, user: post.user %>
         <% end %>
-        <%= paginate @posts %>
+
       <% else %>
         <p>条件に合う方は見つかりませんでした。</p>
       <% end %>
