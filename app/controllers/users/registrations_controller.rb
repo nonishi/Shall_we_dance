@@ -24,6 +24,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @password += "*"
       i += 1
     end
+    @user = User.new(sign_up_params)
+    if @user.invalid?
+      render :new
+    end
   end
 
   def complete
