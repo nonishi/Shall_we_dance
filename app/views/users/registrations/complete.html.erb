@@ -1,0 +1,21 @@
+<div class="container-fluid prompt">
+  <div class="row">
+    <div class="col-10 mx-auto my-5 text-center">
+      <div class="prompt-box">
+        <h1 calss="thanks">登録ありがとうございました！</h1>
+        <h3>早速、募集してみませんか？</h3>
+        <p class="prompt-message">
+          このまま使っていただくことも可能ですが、<br/>
+          自分の募集要項を書くことで、より多くの人に<br/>
+          自分のことを伝えることができます。
+        </p>
+        <div class="prompt-btn mb-3">
+          <%= link_to "募集要項を作成する", new_post_path, class: "btn btn-primary" %>
+        </div>
+        <div class="prompt-btn">
+          <%= link_to "あとにする", user_path(current_user), class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

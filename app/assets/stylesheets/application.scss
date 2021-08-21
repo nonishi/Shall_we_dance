@@ -77,7 +77,24 @@ body{
   background-color: #ECEFF1;
 }
 
-// kaminari
+.prompt {
+  background-image: url(man.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-color: #ECEFF1;
+  position: relative;
+}
+
+.prompt-box {
+  position: absolute;
+  top: 20vh;
+}
+
+.prompt-message {
+  line-height: 1.9rem;
+}
+
 .pagination {
   justify-content: center;
 }
