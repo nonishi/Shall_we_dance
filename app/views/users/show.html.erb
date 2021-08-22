@@ -1,5 +1,4 @@
 <div class="container">
-  <p class="notice"><%= flash[:notice] %></p>
   <div class="row mypage-main">
     <div class="col-6 mx-auto mt-3">
       <h1 class="text-center">
@@ -9,6 +8,7 @@
           <%= @user.name %>さんのPage
         <% end %>
       </h1>
+      <p class="notice"><%= flash[:notice] %></p>
       <div class="text-center mt-5">
         <%= attachment_image_tag @user, :profile_image, size: "180x180", fallback: "no_image.jpg", style: "border-radius: 50%;" %>
       </div>

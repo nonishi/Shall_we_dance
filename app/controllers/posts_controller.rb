@@ -24,13 +24,13 @@ class PostsController < ApplicationController
   def index
     @search_params = {}
     @all_posts = Post.all
-    @posts = Post.includes(:user).page(params[:page])
+    @posts = @all_posts.includes(:user)
     if params[:sort].present?
       case params[:sort]
       when 'new'
-        @posts = @posts.order(:created_at, :desc)
+        @posts = @posts.order(created_at: "DESC")
       when 'old'
-        @posts = @posts.order(:created_at, :asc)
+        @posts = @posts.order(created_at: "ASC")
       when 'old_age'
         @posts = @posts.order('users.age DESC')
       when 'young'
@@ -45,8 +45,9 @@ class PostsController < ApplicationController
         @posts = @posts.order('users.experience ASC')
       end
     else
-      @posts = @posts.order(:created_at, :desc)
+      @posts = @posts.order(created_at: "DESC")
     end
+    @posts = @posts.page(params[:page])
   end
 
   def show
@@ -75,9 +76,9 @@ class PostsController < ApplicationController
     if params[:sort].present?
       case params[:sort]
       when 'new'
-        @posts = @all_posts.order(:created_at, :desc)
+        @posts = @all_posts.order(created_at: "DESC")
       when 'old'
-        @posts = @all_posts.order(:created_at, :asc)
+        @posts = @all_posts.order(created_at: "ASC")
       when 'old_age'
         @posts = @all_posts.order('users.age DESC')
       when 'young'
@@ -92,7 +93,7 @@ class PostsController < ApplicationController
         @posts = @all_posts.order('users.experience ASC')
       end
     else
-      @posts = @all_posts.order(:created_at, :desc)
+      @posts = @all_posts.order(created_at: "DESC")
     end
     @posts = @posts.page(params[:page])
   end
