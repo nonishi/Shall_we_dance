@@ -1,0 +1,2 @@
+$(".says-box").append('<div class="my-says"><span class="small text-muted"><%= time_ago_in_words(@chat.created_at)%>前</span><p><%= @chat.message %></p></div>');
+$("#chat_message").val("");

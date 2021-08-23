@@ -31,7 +31,6 @@ class ChatsController < ApplicationController
       action: 'dm'
     )
     notification.save if notification.valid?
-    redirect_to request.referer
   end
 
   private
