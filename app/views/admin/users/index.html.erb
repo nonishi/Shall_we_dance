@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto my-5">
+      <h2 class="text-center">ユーザー一覧</h2>
+      <table class="table my-3">
+        <tr>
+          <th>ユーザーID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>募集状況</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_active %>
+                <font color="green">募集中</font>
+              <% else %>
+                <font color="gray">募集終了</font>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

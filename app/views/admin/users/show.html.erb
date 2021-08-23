@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto mt-3">
+      <h1 class="text-center">ユーザー詳細</h1>
+      <p class="notice"><%= flash[:notice] %></p>
+      <div class="text-center mt-5">
+        <%= attachment_image_tag @user, :profile_image, size: "180x180", fallback: "no_image.jpg", style: "border-radius: 50%;" %>
+      </div>
+      <table class="table my-3">
+        <tr>
+          <th>募集状況</th>
+          <td>
+            <% if @user.is_active %>
+              【<font color="green">募集中</font>】
+            <% else %>
+              【<font color="gray">募集終了</font>】
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%= @user.name %> 【<%= @user.status %>】</td>
+        </tr>
+        <tr>
+          <th>年齢</th>
+          <td><%= @user.age %>歳</td>
+        </tr>
+        <tr>
+          <th>身長</th>
+          <td><%= @user.height %>cm</td>
+        </tr>
+        <tr>
+          <th>地域</th>
+          <td><%= @user.area %></td>
+        </tr>
+        <tr>
+          <th>社交ダンス歴</th>
+          <td><%= @user.experience %> (学連：<%= @user.club_status %>）</td>
+        </tr>
+        <tr>
+          <th>その他(持ち級など)</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <th>作成日</th>
+          <td><%= @user.created_at %></td>
+        </tr>
+        <tr>
+          <th>最終更新日</th>
+          <td><%= @user.updated_at %></td>
+        </tr>
+      </table>
+      <div class="text-center my-5">
+        <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

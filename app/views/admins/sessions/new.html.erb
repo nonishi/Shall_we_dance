@@ -1,8 +1,12 @@
-<div class="container">
+<div class="container-fluid sign_in">
   <div class="row">
     <div class="mx-auto mt-2">
-      <h2>管理者ログイン</h2>
+      <h1 class="text-center">Shall We Dance?</h1>
+      <h2 class="text-center">管理者ログイン</h2>
       <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
+        <% unless alert.blank? %>
+          <strong class="text-danger"><%= alert %></strong>
+        <% end %>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br/>
           <%= f.email_field :email, size: 30 %>
@@ -11,7 +15,7 @@
           <%= f.label :password, "パスワード" %><br/>
           <%= f.password_field :password, size: 30 %>
         </div>
-        <div class="actions">
+        <div class="actions text-center">
           <%= f.submit "ログイン", class: "btn btn-success" %>
         </div>
       <% end %>

@@ -31,4 +31,9 @@ Rails.application.routes.draw do
   resources :chats, only: [:show, :create]
 
   resources :notifications, only: :index
+  
+  namespace :admin do
+    resources :users, only:[:index, :show, :edit, :update]
+  end
+  
 end
