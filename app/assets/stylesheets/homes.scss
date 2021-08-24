@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #top {
-  background-image: url(dancing.jpg);
+  background-image: image-url("dancing.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -61,7 +61,7 @@
 @media screen and (max-width:767px){
 
   #top {
-    background-image: url(tango.jpg);
+    background-image: image-url("tango.jpg");
   }
 
 }
