@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-    render(:new) && return if params[:back]
+    return if params[:back]
     super
   end
 
@@ -25,9 +25,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       i += 1
     end
     @user = User.new(sign_up_params)
-    if @user.invalid?
-      render :new
-    end
   end
 
   def complete

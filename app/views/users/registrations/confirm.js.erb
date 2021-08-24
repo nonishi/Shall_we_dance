@@ -1,0 +1,5 @@
+<% if @user.invalid? %>
+  $(".main-contents").html("<%= j(render 'new', user: @user) %>");
+<% else %>
+  $(".main-contents").html("<%= j(render 'confirm', user: @user, password: @password) %>");
+<% end %>
