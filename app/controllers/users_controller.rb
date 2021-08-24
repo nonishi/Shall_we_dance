@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         age: from_age..to_age,
         target: !@user.target,
         area: @user.area
-      ).where.not(id: current_user.id)
+      ).where.not(id: current_user.id).sample(5)
     else
       @recommend_users = []
     end

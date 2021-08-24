@@ -6,9 +6,9 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :max_age
       t.integer :min_height
       t.integer :max_height
-      t.integer :status, null: false
-      t.integer :directionality, null: false
-      t.integer :experience, null: false
+      t.integer :status, null: false, default: 0
+      t.integer :directionality, null: false, default: 0
+      t.integer :experience, null: false, default: 0
       t.string :place
       t.string :frequency
       t.text :comment

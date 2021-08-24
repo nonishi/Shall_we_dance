@@ -9,10 +9,10 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.user_id = current_user.id
     if post.save
-      if current_user.target == true
-        flash[:notice] = "パートナーを募集しました。"
-      else
+      if current_user.target
         flash[:notice] = "リーダーを募集しました。"
+      else
+        flash[:notice] = "パートナーを募集しました。"
       end
       redirect_to post_path(post)
     else

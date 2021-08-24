@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post 'users/sign_up/confirm', to: 'users/registrations#confirm'
     get 'users/sign_up/complete', to: 'users/registrations#complete'
   end
-  
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -31,9 +31,8 @@ Rails.application.routes.draw do
   resources :chats, only: [:show, :create]
 
   resources :notifications, only: :index
-  
+
   namespace :admin do
-    resources :users, only:[:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
-  
 end

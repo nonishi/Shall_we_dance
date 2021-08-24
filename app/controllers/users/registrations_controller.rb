@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-    render :new and return if params[:back]
+    render(:new) && return if params[:back]
     super
   end
 

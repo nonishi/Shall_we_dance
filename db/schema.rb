@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 2021_08_16_042836) do
     t.integer "max_age"
     t.integer "min_height"
     t.integer "max_height"
-    t.integer "status", null: false
-    t.integer "directionality", null: false
-    t.integer "experience", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "directionality", default: 0, null: false
+    t.integer "experience", default: 0, null: false
     t.string "place"
     t.string "frequency"
     t.text "comment"
