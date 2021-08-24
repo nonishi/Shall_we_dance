@@ -1,6 +1,6 @@
 <div class="container-fluid bg-gray">
   <div class="row">
-    <div class="col-6 mx-auto my-5">
+    <div class="mx-auto my-5">
       <h2 class="text-center mb-4">募集要項作成</h2>
       <%= form_with model: @post, local: true do |f| %>
         <div class="field">
@@ -12,11 +12,11 @@
           <%= f.select :directionality, Post.directionalities.keys.to_a, include_blank: "選択して下さい" %>
         </div>
         <div class="field">
-          <%= f.label "希望年齢" %><br/>
+          <%= f.label "希望年齢(半角)" %><br/>
           <%= f.number_field :min_age, min: 0, max: 100 %>歳~<%= f.number_field :max_age, min: 0, max: 100 %>歳
         </div>
         <div class="field">
-          <%= f.label "希望身長" %><br/>
+          <%= f.label "希望身長(半角)" %><br/>
           <%= f.number_field :min_height, min: 100, max: 200 %>cm~<%= f.number_field :max_height, min: 100, max: 200 %>cm
         </div>
         <div class="field">
@@ -33,7 +33,7 @@
         </div>
         <div class="field">
           <%= f.label :comment, "募集コメント" %><br/>
-          <%= f.text_area :comment, size: "30x3" %>
+          <%= f.text_area :comment, size: "50x5" %>
         </div>
         <div class="actions">
           <%= f.submit "募集する", class: "btn btn-success" %>
