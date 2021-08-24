@@ -70,6 +70,11 @@
         <%= hidden_field :user, :club_status %>
         <%= hidden_field :user, :introduction %>
         <%= hidden_field :user, :password %>
+        <script>
+        　$(function() {
+            $('html,body').scrollTop(0);
+          });
+        </script>
         <div class="actions text-center">
           <%= f.submit "修正する", class: "btn btn-danger mx-3", name: :back %>
           <%= f.submit "新規登録", class: "btn btn-success mx-3" %>
