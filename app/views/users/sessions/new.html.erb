@@ -3,22 +3,24 @@
     <div class="mx-auto mt-2">
       <h1 class="text-center">Shall We Dance?</h1>
       <h2 class="text-center">ログイン</h2>
-      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-        <% unless alert.blank? %>
-          <strong class="text-danger"><%= alert %></strong>
-        <% end %>
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %><br/>
-          <%= f.email_field :email, size: 30 %>
-        </div>
-        <div class="field">
-          <%= f.label :password, "パスワード" %><br/>
-          <%= f.password_field :password, size: 30 %>
-        </div>
-        <div class="actions text-center">
-          <%= f.submit "ログイン", class: "btn btn-success" %>
-        </div>
+      <% unless alert.blank? %>
+        <strong class="text-danger"><%= alert %></strong>
       <% end %>
+      <div class="mx-auto" style="width: 80%">
+        <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+          <div class="field">
+            <%= f.label :email, "メールアドレス" %><br/>
+            <%= f.email_field :email, size: 30 %>
+          </div>
+          <div class="field">
+            <%= f.label :password, "パスワード" %><br/>
+            <%= f.password_field :password, size: 30 %>
+          </div>
+          <div class="actions text-center">
+            <%= f.submit "ログイン", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
       <p class="mt-5"><span style="background-color:#fc9">新規登録がお済みでない方</span></p>
       <p><%= link_to "こちら", new_user_registration_path %> から新規登録を行ってください。</p>
     </div>
