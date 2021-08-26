@@ -14,6 +14,18 @@
       <% @posts.each do |post| %>
         <%= render 'index', post: post, user: post.user %>
       <% end %>
+      <script>
+        $(function() {
+          $('#back a').on('click',function(event){
+            $('body, html').animate({
+              scrollTop:0
+            }, 800);
+          });
+        });
+      </script>
+      <span id="back">
+        <%= link_to image_tag("arrow.png", class:"arrow"), "#" %>
+      </span>
       <%= paginate @posts %>
     </div>
   </div>

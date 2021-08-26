@@ -7,6 +7,7 @@
 }
 
 .post-index {
+  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,4 +23,13 @@
 
 .recommend-td {
   width: 40%;
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+#back .arrow {
+  width: 50px;
 }
