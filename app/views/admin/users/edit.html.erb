@@ -3,7 +3,7 @@
     <div class="mx-auto my-5">
       <h2 class="text-center mb-4">ユーザー編集</h2>
       <p class="notice"><%= flash[:notice] %></p>
-      <%= form_with model: @user, local: true do |f| %>
+      <%= form_with model: @user, url: {controller: 'users', action: 'update' }, local: true do |f| %>
         <div class="field">
           <%= f.label "プロフィール画像" %><br/>
           <%= f.attachment_field :profile_image %>

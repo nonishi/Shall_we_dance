@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @users = User.page(params[:page]).per(20)
   end
@@ -13,7 +15,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if customer.update(customer_params)
+    if user.update(user_params)
       flash[:notice] = "ユーザー情報を更新しました"
       redirect_to admin_user_path(user)
     else
@@ -21,5 +23,11 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = "情報更新に失敗しました"
       render "edit"
     end
+  end
+  
+  private
+
+  def user_params
+    params.require(:user).permit(:profile_image, :is_active, :name, :status, :age, :height, :area, :experience, :introduction)
   end
 end
