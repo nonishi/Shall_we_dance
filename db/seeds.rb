@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-50.times do |n|
+30.times do |n|
   name = ('A'..'Z').to_a.sample + "." + ('A'..'Z').to_a.sample
   area = [8, 9, 10, 11, 12, 13, 14, 25, 26, 27, 28, 29, 30]
   User.create(
@@ -17,7 +17,7 @@
     area: area.sample,
     experience: rand(0..3),
     introduction: ["特になし", "jbdf A級", "jbdf A級", "jbdf B級", "jbdf C級"].sample,
-    status: rand(0..1),
+    status: 0,
     club_status: rand(0..3),
     is_active: true,
     email: "user#{n}@test.com",
@@ -39,7 +39,7 @@ end
     status: rand(0..1),
     club_status: rand(4..5),
     is_active: true,
-    email: "user#{n}@test.com",
+    email: "user#{30+n}@test.com",
     password: "password"
     )
 end
@@ -57,7 +57,7 @@ end
     status: rand(0..1),
     club_status: rand(4..5),
     is_active: true,
-    email: "user#{n}@test.com",
+    email: "user#{60+n}@test.com",
     password: "password"
     )
 end
