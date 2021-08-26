@@ -50,9 +50,9 @@ class Post < ApplicationRecord
 
   scope :target, -> (target) { where(users: { target: target }) if target.present? }
   scope :status, -> (status) { where(users: { status: status.to_sym }) if status.present? }
-  scope :height_from, -> (from) { where('height >= ?', from) if from.present? }
-  scope :height_to, -> (to) { where('height <= ?', to) if to.present? }
-  scope :age_from, -> (from) { where('age >= ?', from) if from.present? }
-  scope :age_to, -> (to) { where('age <= ?', to) if to.present? }
+  scope :height_from, -> (from) { Post.includes(:user).where('height >= ?', from) if from.present? }
+  scope :height_to, -> (to) { Post.includes(:user).where('height <= ?', to) if to.present? }
+  scope :age_from, -> (from) { Post.includes(:user).where('age >= ?', from) if from.present? }
+  scope :age_to, -> (to) { Post.includes(:user).where('age <= ?', to) if to.present? }
   scope :area, -> (area) { where(users: { area: area.to_sym }) if area.present? }
 end
