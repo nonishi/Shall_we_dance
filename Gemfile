@@ -40,7 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
-  gem 'faker'
+  
 end
 
 group :development do
@@ -74,6 +74,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass'
 
 gem 'dotenv-rails'
+gem 'faker'
 group :production do
   gem 'mysql2'
 end
