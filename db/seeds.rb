@@ -46,13 +46,12 @@ end
 
 30.times do |n|
   name = ('A'..'Z').to_a.sample + "." + ('A'..'Z').to_a.sample
-  area = [1..47]
   User.create(
     name: name,
     age: rand(23..60),
     target: Faker::Boolean.boolean,
     height: rand(150..180),
-    area: area.sample,
+    area: rand(1..47),
     experience: rand(4..6),
     introduction: ["特になし", "jbdf A級", "jbdf A級", "jbdf B級", "jbdf C級"].sample,
     status: rand(0..1),
