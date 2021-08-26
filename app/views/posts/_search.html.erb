@@ -1,6 +1,6 @@
 <h3>条件検索</h3>
 <%= form_with(scope: :search, url: search_posts_path, method: :get, local: true) do |f| %>
-  <div class="field"> 
+  <div class="field">
     <%= f.label "募集対象" %><br/>
     <%= f.radio_button :target, 'false', checked: search_params[:target] == "false" %>
     <%= f.label :target, 'リーダー', value: false %>
@@ -11,8 +11,8 @@
     <%= f.label "プロ/アマ" %><br/>
     <%= f.radio_button :status, 'アマチュア', checked: search_params[:status] == "アマチュア" %>
     <%= f.label :status, 'アマチュア', value: "アマチュア" %>
-    <%= f.radio_button :status, 'プロ' %>
-    <%= f.label :status, 'プロ', value: "プロ", checked: search_params[:status] == "プロ" %>
+    <%= f.radio_button :status, 'プロ', checked: search_params[:status] == "プロ" %>
+    <%= f.label :status, 'プロ', value: "プロ" %>
   </div>
   <div class="field">
     <%= f.label :height, "身長" %><br/>
