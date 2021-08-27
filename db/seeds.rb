@@ -37,7 +37,7 @@ end
     experience: rand(4..6),
     introduction: ["特になし", "jbdf A級", "jbdf A級", "jbdf B級", "jbdf C級"].sample,
     status: rand(0..1),
-    club_status: rand(2..3),
+    club_status: rand(0..3),
     is_active: true,
     email: "user#{30+n}@test.com",
     password: "password"
@@ -55,7 +55,7 @@ end
     experience: rand(4..6),
     introduction: ["特になし", "jbdf A級", "jbdf A級", "jbdf B級", "jbdf C級"].sample,
     status: rand(0..1),
-    club_status: rand(2..3),
+    club_status: rand(0..3),
     is_active: true,
     email: "user#{60+n}@test.com",
     password: "password"
