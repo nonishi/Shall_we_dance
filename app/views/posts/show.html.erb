@@ -59,7 +59,7 @@
       </table>
       <% if user_signed_in? %>
         <% if @post.user_id == current_user.id %>
-          <%= link_to "マイページへ", user_path(current_user), class: "btn btn-danger" %>
+          <%= link_to "マイページへ", user_path(current_user), class: "btn btn-primary" %>
           <%= link_to "募集要項編集", edit_post_path(@post), class: "btn btn-success" %>
         <% else %>
           <span class="favorite-btn_<%= @post.id %>"><%= render 'favorites/favorite-btn', post: @post %></span>

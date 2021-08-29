@@ -1,7 +1,7 @@
 <div class="container favorite">
   <div class="row">
     <div class="col-6 mx-auto my-5">
-      <h2 class="text-center mb-5">気になる一覧</h2>
+      <h2 class="text-center mb-5">いいね一覧</h2>
         <% if @posts.exists? %>
           <% @posts.each do |post| %>
             <%= render "posts/index", post: post, user: post.user %>
