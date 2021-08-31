@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <th>その他(持ち級など)</th>
-          <td><%= @user.introduction %></td>
+          <td><%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th>プロ・アマ希望</th>
@@ -50,7 +50,7 @@
         </tr>
         <tr>
           <th height="150">募集コメント</th>
-          <td><%= @post.comment %></td>
+          <td><%= safe_join(@post.comment.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th>最終更新日</th>

@@ -83,3 +83,11 @@
   transform: rotate(-35deg);
 }
 
+.says-box {
+  height: 65vh;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 10px;
+  overflow-y: scroll;
+}
+

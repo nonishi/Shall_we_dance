@@ -45,7 +45,7 @@
         </tr>
         <tr>
           <th>その他(持ち級など)</th>
-          <td><%= @user.introduction %></td>
+          <td><%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
         </tr>
       </table>
     </div>

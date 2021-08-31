@@ -1,8 +1,8 @@
 <div class="container-fluid chat-show">
   <div class="row">
     <div class="col-5 mx-auto chat">
-      <h2 class="text-center my-3"><%= @user.name %> さんとのチャット</h2>
-      <div class="says-box">
+      <h2 class="text-center my-4"><%= @user.name %> さんとのチャット</h2>
+      <div class="says-box my-4">
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>
             <div class="my-says">
