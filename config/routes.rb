@@ -17,8 +17,11 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
-  resources :users, only: [:index, :show, :edit, :update]
-  get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get 'favorites'
+    end
+  end
 
   resources :posts do
     collection do
