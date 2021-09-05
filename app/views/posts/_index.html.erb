@@ -32,6 +32,6 @@
   </tr>
   <tr>
     <th class="post-th">募集コメント</th>
-    <td><%= post.comment %></td>
+    <td><%= safe_join(post.comment.split("\n"),tag(:br)) %></td>
   </tr>
 </table>

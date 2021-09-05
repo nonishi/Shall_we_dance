@@ -17,9 +17,9 @@
             <td><%= user.email %></td>
             <td>
               <% if user.is_active %>
-                <font color="green">募集中</font>
+                <p style="color: green;">募集中</p>
               <% else %>
-                <font color="gray">募集終了</font>
+                <p style="color: gray;">募集終了</p>
               <% end %>
             </td>
           </tr>
